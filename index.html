@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JARVIS 3D Gesture System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <video id="camera" autoplay muted playsinline></video>
+    <button id="cameraTestBtn" type="button">CAMERA TEST</button>
+
+    <div id="threeLayer">
+        <canvas id="threeCanvas"></canvas>
+    </div>
+
+    <canvas id="handCanvas"></canvas>
+
+    <div id="hudRoot" class="hud-root active">
+        <div class="scan-lines"></div>
+        <div class="vignette"></div>
+
+        <div class="status-stack">
+            <div id="gestureStatus" class="status-chip">Gesture: Waiting...</div>
+            <div id="trackingStatus" class="status-chip subtle">Tracking: Searching for hands</div>
+            <div id="cameraStatus" class="status-chip subtle">CAMERA: CONNECTING...</div>
+            <div id="modeStatus" class="status-chip subtle">Mode: Assembly</div>
+        </div>
+
+        <div class="panel left-panel">
+            <h3>Energy Core</h3>
+            <p>Output <span id="energyValue">76%</span></p>
+            <p>Stability <span id="stabilityValue">Nominal</span></p>
+            <p>Flux <span id="fluxValue">2.18THz</span></p>
+        </div>
+
+        <div class="panel right-panel">
+            <h3>Scan Matrix</h3>
+            <p>Analysis <span id="analysisValue">91.2%</span></p>
+            <p>Network <span id="networkValue">Synced</span></p>
+            <p>Target Lock <span id="targetValue">Acquiring</span></p>
+        </div>
+
+        <div class="center-rings">
+            <div class="ring ring-a"></div>
+            <div class="ring ring-b"></div>
+            <div class="ring ring-c"></div>
+        </div>
+
+        <div id="aiMessage" class="ai-message">System online. Awaiting gesture input.</div>
+        <div id="calibration" class="calibration">Hands not detected. Raise your hands to calibrate.</div>
+        <div id="cameraError" class="camera-error" role="alert" aria-live="assertive"></div>
+        <div id="cursor" class="cursor"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.min.js"></script>
+    <script src="camera-bootstrap.js"></script>
+    <script src="gesture-bootstrap.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
